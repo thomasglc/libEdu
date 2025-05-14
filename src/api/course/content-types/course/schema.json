@@ -24,6 +24,12 @@
       "relation": "manyToMany",
       "target": "api::chapter.chapter",
       "inversedBy": "courses"
+    },
+    "classes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::class.class",
+      "mappedBy": "courses"
     }
   }
 }

@@ -32,6 +32,12 @@
       "relation": "manyToOne",
       "target": "api::class.class",
       "inversedBy": "SubClasses"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "inversedBy": "classes"
     }
   }
 }
