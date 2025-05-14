@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chapters",
+  "info": {
+    "singularName": "chapter",
+    "pluralName": "chapters",
+    "displayName": "Chapter",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "sub_chapters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::sub-chapter.sub-chapter",
+      "inversedBy": "chapters"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "chapters"
+    }
+  }
+}
