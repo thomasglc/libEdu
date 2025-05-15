@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_sub_chapter_progresses",
+  "info": {
+    "singularName": "user-sub-chapter-progress",
+    "pluralName": "user-sub-chapter-progresses",
+    "displayName": "userSubChapterProgress",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "sub_chapter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::sub-chapter.sub-chapter",
+      "inversedBy": "user_sub_chapter_progresses"
+    },
+    "students": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_sub_chapter_progresses"
+    },
+    "completed_at": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}

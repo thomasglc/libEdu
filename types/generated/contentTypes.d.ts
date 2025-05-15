@@ -515,6 +515,48 @@ export interface ApiSubChapterSubChapter extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user_sub_chapter_progresses: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-sub-chapter-progress.user-sub-chapter-progress'
+    >;
+  };
+}
+
+export interface ApiUserSubChapterProgressUserSubChapterProgress
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'user_sub_chapter_progresses';
+  info: {
+    description: '';
+    displayName: 'userSubChapterProgress';
+    pluralName: 'user-sub-chapter-progresses';
+    singularName: 'user-sub-chapter-progress';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    completed_at: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-sub-chapter-progress.user-sub-chapter-progress'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    students: Schema.Attribute.Relation<
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    sub_chapter: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::sub-chapter.sub-chapter'
+    >;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1008,6 +1050,10 @@ export interface PluginUsersPermissionsUser
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    user_sub_chapter_progresses: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-sub-chapter-progress.user-sub-chapter-progress'
+    >;
     username: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique &
@@ -1031,6 +1077,7 @@ declare module '@strapi/strapi' {
       'api::class.class': ApiClassClass;
       'api::course.course': ApiCourseCourse;
       'api::sub-chapter.sub-chapter': ApiSubChapterSubChapter;
+      'api::user-sub-chapter-progress.user-sub-chapter-progress': ApiUserSubChapterProgressUserSubChapterProgress;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

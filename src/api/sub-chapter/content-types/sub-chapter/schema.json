@@ -27,6 +27,12 @@
       "relation": "manyToMany",
       "target": "api::chapter.chapter",
       "mappedBy": "sub_chapters"
+    },
+    "user_sub_chapter_progresses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-sub-chapter-progress.user-sub-chapter-progress",
+      "mappedBy": "sub_chapter"
     }
   }
 }
